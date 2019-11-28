@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<table class="table">
+    <tbody>
+    <tr align="center">
+        <td>商品编号</td>
+        <td>商品名称</td>
+        <td>商品库存</td>
+        <td>商品价格</td>
+        <td>商品状态</td>
+        <td>商品操作</td>
+    </tr>
+    <tr align="center" th:each="li:${proList}">
+        <td th:text="${li.proid}"></td>
+        <td th:text="${li.proname}"></td>
+        <td th:text="${li.prosum}"></td>
+        <td th:text="${li.proprice}"></td>
+        <td th:text="${li.status.staname}"></td>
+        <td>
+            <a th:href="@{/pro/findById(proId=${li.proid})}" class="btn btn-info btn-sm active" role="button"
+               aria-pressed="true">修改</a>
+            <a th:href="@{/pro/delete(proId=${li.proid})}" class="btn btn-danger btn-sm active" role="button"
+               aria-pressed="true">删除</a>
+        </td>
+    </tr>
+    <a href="/pro/toInsert" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">添加信息</a>
+    </tbody>
+
+            <!--
+
+            git config --global user.name "Wang"
+        git config --global user.email "3023936881@qq.com"
+
+            -->
+</table>
+</body>
+</html>
